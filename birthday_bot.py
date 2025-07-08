@@ -54,7 +54,8 @@ async def check_birthdays():
 
 async def main():
     global app
-    app = ApplicationBuilder().token("ТВОЙ_ТОКЕН_ТУТ").build()
+    import os
+app = ApplicationBuilder().token(os.environ["BOT_TOKEN"]).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), add_birthday))
